@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideFirebaseApp(() => initializeApp({
       "projectId":"danotes-87c02",
       "appId":"1:801859339504:web:183b4295bb281e54b7ee35",
-      "storageBucket":"danotes-87c02.firebasestorage.app",
+      "storageBucket":"danotes-87c02.firebasestorage.com",
       "apiKey":"AIzaSyA9Ypb04TfhslxYqGX7JhqO6a4RfJjsYG4",
       "authDomain":"danotes-87c02.firebaseapp.com",
       "messagingSenderId":"801859339504"}))), 
