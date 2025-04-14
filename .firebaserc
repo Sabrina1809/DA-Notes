@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "danotes-87c02": {
+      "hosting": {
+        "da-notes": [
+          "danotes-87c02"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "danotes-87c02"
+  }
+}
