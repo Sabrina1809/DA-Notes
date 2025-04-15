@@ -47,12 +47,20 @@ export class NoteComponent {
       this.noteService.deleteNote("notes", docId);
       console.log(`Note ${docId} wurde verschoben`);
     }
-    
   }
 
-  moveToNotes(){
-    this.note.type = 'note';
+
+  moveToNotes() {
+    if (this.note.id) {
+      this.note.type = 'note';
+      let docId = this.note.id;
+      delete this.note.id;
+      this.noteService.addNote(this.note, "notes");
+      this.noteService.deleteNote("trash", docId);
+      console.log(`Note ${docId} wurde wiederhergestellt`);
+    }
   }
+  
 
   deleteNote(){
     if (this.note.id) {

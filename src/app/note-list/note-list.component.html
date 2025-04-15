@@ -76,65 +76,61 @@
             </button>
         </div>
         <div>
-            <button (click)="changeTrashStatus()" class="white_btn_round "
-                [ngClass]="{'back_arrow_active': status == 'trash', 'back_arrow_inactive': status != 'trash'}">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="arrow_back">
-                        <mask id="mask0_103_413" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                            width="24" height="24">
-                            <rect id="Bounding box" width="24" height="24" fill="#D9D9D9" />
-                        </mask>
-                        <g mask="url(#mask0_103_413)">
-                            <path id="arrow_back_2"
-                                d="M7.8248 13L12.7248 17.9C12.9248 18.1 13.0206 18.3333 13.0123 18.6C13.004 18.8667 12.8998 19.1 12.6998 19.3C12.4998 19.4833 12.2665 19.5792 11.9998 19.5875C11.7331 19.5958 11.4998 19.5 11.2998 19.3L4.6998 12.7C4.5998 12.6 4.52897 12.4917 4.4873 12.375C4.44564 12.2583 4.4248 12.1333 4.4248 12C4.4248 11.8667 4.44564 11.7417 4.4873 11.625C4.52897 11.5083 4.5998 11.4 4.6998 11.3L11.2998 4.7C11.4831 4.51667 11.7123 4.425 11.9873 4.425C12.2623 4.425 12.4998 4.51667 12.6998 4.7C12.8998 4.9 12.9998 5.1375 12.9998 5.4125C12.9998 5.6875 12.8998 5.925 12.6998 6.125L7.8248 11H18.9998C19.2831 11 19.5206 11.0958 19.7123 11.2875C19.904 11.4792 19.9998 11.7167 19.9998 12C19.9998 12.2833 19.904 12.5208 19.7123 12.7125C19.5206 12.9042 19.2831 13 18.9998 13H7.8248Z"
-                                fill="white" />
-                        </g>
-                    </g>
-                </svg>
+            <!-- Zurück-Pfeil (nur sichtbar im Trash-Modus) -->
+
+            <button 
+            *ngIf="status === 'trash'" 
+            (click)="status = 'notes'" 
+            class="white_btn_round back_arrow_active">
+            <!-- Beispiel-SVG für den Zurück-Pfeil -->
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             </button>
 
-            <button (click)="changeTrashStatus()" class="btn trash_btn"
-                [ngClass]="{'trash_btn_active': status == 'trash'}">
-                @if (status != 'trash') {
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <g id="Filters icons">
-                        <mask id="mask0_77_918" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                            width="24" height="24">
-                            <rect id="Bounding box" width="24" height="24" fill="#D9D9D9" />
-                        </mask>
-                        <g mask="url(#mask0_77_918)">
-                            <path id="delete"
-                                d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
-                                fill="#6BC1E1" />
-                        </g>
-                    </g>
-                </svg>
-                }
-                @else {
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <g id="Filters icons">
-                        <mask id="mask0_77_921" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                            width="24" height="24">
-                            <rect id="Bounding box" width="24" height="24" fill="#D9D9D9" />
-                        </mask>
-                        <g mask="url(#mask0_77_921)">
-                            <path id="delete"
-                                d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
-                                fill="white" />
-                        </g>
-                    </g>
-                </svg>
-                }
+            <!-- Trash-Button -->
+            <button 
+            (click)="changeTrashStatus()" 
+            class="btn trash_btn"
+            [ngClass]="{'trash_btn_active': status === 'trash'}">
 
+            <!-- Trash-Icon (unterschiedlich je nach Status) -->
+            <ng-container *ngIf="status !== 'trash'; else whiteTrashIcon">
+            <!-- Blaues Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <mask id="mask-blue" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask-blue)">
+                <path d="M7 21C6.45 21 5.98 20.8 5.59 20.41C5.2 20.02 5 19.55 5 19V6H4V5H9V4H15V5H20V6H19V19C19 19.55 18.8 20.02 18.41 20.41C18.02 20.8 17.55 21 17 21H7ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z" fill="#6BC1E1"/>
+                </g>
+            </svg>
+            </ng-container>
 
+            <ng-template #whiteTrashIcon>
+            <!-- Weißes Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <mask id="mask-white" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask-white)">
+                <path d="M7 21C6.45 21 5.98 20.8 5.59 20.41C5.2 20.02 5 19.55 5 19V6H4V5H9V4H15V5H20V6H19V19C19 19.55 18.8 20.02 18.41 20.41C18.02 20.8 17.55 21 17 21H7ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z" fill="white"/>
+                </g>
+            </svg>
+            </ng-template>
 
-                <p>Trash</p>
+            <p>Trash</p>
             </button>
+
         </div>
     </div>
     <div>
-     
-            <app-note *ngFor="let note of getList()" [note]="note"></app-note>
+        <app-note 
+        *ngFor="let note of status === 'trash' ? getTrash() : getList()" 
+        [note]="note">
+      </app-note>
+      
+            <!-- <app-note *ngFor="let note of getList()" [note]="note"></app-note> -->
           
     </div>
 </div>

@@ -36,16 +36,17 @@ export class NoteListComponent {
     this.favFilter = filter;
   }
 
-  changeTrashStatus(){
-    if(this.status == "trash"){
-      this.status = "notes";
-    } else {
-      this.status = "trash";
-      this.favFilter = "all";
-    }
+  // changeTrashStatus(){
+  //   if(this.status == "trash"){
+  //     this.status = "notes";
+  //   } else {
+  //     this.status = "trash";
+  //     this.favFilter = "all";
+  //   }
+  // }
+  changeTrashStatus() {
+    this.status = 'trash';
+    this.favFilter = 'all'; // Reset beim Wechsel in den Trash
   }
-
-
-
-
+  
 }
